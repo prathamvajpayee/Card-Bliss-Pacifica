@@ -17,6 +17,8 @@ module.exports = function (server) {
         queue.push([socket.id, details]);
         io.emit("QueueLength", queue.length);
 
+        console.log("queue",details.name)
+
         for (let i = 0; i < queue.length; i++) {
           for (let j = i + 1; j < queue.length; j++) {
             if (queue[i][1].gridSelect === queue[j][1].gridSelect) {
@@ -90,6 +92,8 @@ module.exports = function (server) {
     socket.on("nameExchange", (player) => {
       const target = player.player1.split(",")[0] === socket.id ? player.player2.split(",")[0] : player.player1.split(",")[0];
       io.to(target).emit('nameExchange', player.name);
+
+      console.log("playing",player.name)
     });
 
     socket.on('disconnect', () => {
@@ -102,7 +106,7 @@ module.exports = function (server) {
             .split("-")
             .find(id => id !== socket.id);
 
-          io.emit("gameDisconnected");
+          io.to(otherId).emit("gameDisconnected");
           break;
         }
       }
