@@ -1,0 +1,1640 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Card Bliss | Pacifica</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Jersey+20&family=Roboto:ital,wght@0,100..900;1,100..900&family=Special+Gothic+Expanded+One&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      width: 100vw;
+      max-height: 100vh;
+      max-width: 100vw;
+      font-family: 'Jersey 20';
+      overflow: hidden;
+      position: relative;
+    }
+
+    .card-container {
+      z-index: 100;
+      height: clamp(50px, 20vh, 150px);
+      width: clamp(40px, 9vw, 200px);
+
+      transform-style: preserve-3d;
+      justify-self: center;
+      transform: 1s;
+      position: fixed;
+
+    }
+
+    .card-home {
+      height: 100%;
+      width: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 7px;
+      /* justify-self: center; */
+      transform-style: preserve-3d;
+      transition: transform 0.3s ease;
+    }
+
+    /* Minimal floating animation */
+    @keyframes subtleFloat {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+
+    .card-container {
+      animation: cardanimation 4s ease-in-out infinite;
+    }
+
+    .main-section {
+      height: 100vh;
+      width: 100vw;
+      /* background-image: url("/images/misery.png"); */
+      /* background-image: url("/images/kimcook chill.png"); */
+      background-image: url("/images/pacifica-5.png");
+      /* background-image: url("/images/line6.png"); */
+      /* background-image: url("/images/kimcookgrass.png"); */
+      /* background-image: url("/images/sand.png"); */
+      background-size:cover;
+      background-position: center 55%;
+      background-repeat: no-repeat;
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* background-color: rgb(13, 13, 28); */
+    }
+
+    .home {
+      position: absolute;
+      height: 100vh;
+      width: 100vw;
+      display: grid;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+      color: rgb(255, 255, 255);
+      overflow: hidden;
+    }
+
+    .home .clouds {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      top: -10vh;
+      z-index: 101;
+      scale: 0.9;
+      pointer-events: none;
+    }
+
+    .home .center {
+      height: 50vh;
+      width: 30vw;
+      position: relative;
+      z-index: 102;
+      justify-self: center;
+      transform: translateY(50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .home-cards {
+      position: absolute;
+      height: 100vh;
+      width: 100vw;
+      display: grid;
+      justify-content: center;
+      align-items: center;
+      z-index: 106;
+      color: white;
+      overflow: hidden;
+    }
+
+    .center-text {
+      color: white;
+      font-family: "Jersey 20";
+      font-size: 8.5vw;
+      font-family: "Goldman";
+      text-transform: uppercase;
+      text-align: center;
+      position: relative;
+    }
+
+    .center-text-2 {
+      top: -15%;
+    }
+
+    .center-button {
+      height: 8vh;
+      width: 50%;
+      aspect-ratio: 5 / 1;
+      position: relative;
+      top: -5vh;
+      margin: 0 auto;
+      border: 2px solid white;
+      background: linear-gradient(0deg, rgb(0, 0, 0) 0%, #61D7EF 100%);
+      border-radius: 7px;
+      cursor: pointer;
+      color:white
+    }
+
+    .center-button p {
+      font-size: xx-large;
+      font-weight: 700;
+      font-family: "Goldman";
+      text-transform: uppercase;
+    }
+
+    .setting {
+      height: 60%;
+      width: min(90vw, 600px);
+      padding: 5%;
+      display: none;
+      flex-direction: column;
+      gap: 5vh;
+      justify-content: center;
+      border: 5px solid white;
+      align-items: center;
+      border-radius: 10px;
+      /* background-color: rgb(91, 6, 218); */
+      background-color: rgb(0, 0, 0);
+      background-image: url("/images/pacifica-4.webp");
+      background-size: cover;
+      background-position: 100%;
+      color:white;
+      box-shadow: 0 0 20px 10px rgba(0, 204, 255, 0.6);
+    }
+
+    .setting-1 {
+      display: flex;
+      gap: 1vw;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .setting-1 h1 {
+      font-size: xx-large;
+    }
+
+    .start-button {
+      padding: 10px 10px;
+      padding-bottom: 5vh;
+      text-align: center;
+      width: 50%;
+      /* left:25%; */
+      position: relative;
+      margin-bottom: -5vh;
+      z-index: 100;
+      border-radius: 10px;
+      font-size: clamp(20px, 4vw, 24px);
+      font-family: "Jersey 20";
+      /* background-color: rgb(35, 131, 35); */
+      /* background-color: rgb(233, 68, 197); */
+      background-color: #61D7EF;
+      color: black;
+      cursor: pointer;
+      box-shadow: 1px 2px 2px 3px #e4dfdf;
+    }
+
+    .start-button:hover {
+      background-color: #61D7EF;
+      box-shadow: 1px 2px 2px 3px #00000000;
+    }
+
+    .setting-1 button {
+      height: 5vh;
+      width: 50%;
+      margin-bottom: 2.5vh;
+    }
+
+    .setting-text {
+      font-size: clamp(30px, 7vw, 60px);
+      margin-bottom: 7vh;
+    }
+
+    main {
+      height: 90vh;
+      width: 80vw;
+      background-color: transparent;
+      display: grid;
+      gap: 10px;
+      z-index: 99;
+      position: relative;
+      margin: 0 auto;
+      padding: 10px;
+    }
+
+    .card {
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.5s;
+      cursor: pointer;
+      border-radius: 10px;
+      height: 100%;
+      width: 100%;
+      aspect-ratio: 1/1;
+      transform: perspective(1000px);
+    }
+
+    .card.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .front,
+    .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 10px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .front {
+      background-image: url("/images/Cyan_Logo_Dark_Background.png");
+      background-size: cover;
+      background-position: center;
+      backface-visibility: hidden;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+    }
+    .back {
+      /* background-image: url("/images/mitosis.jpg"); */
+      background-size: cover;
+      background-position: center;
+      backface-visibility: hidden;
+      position: absolute;
+      transform: rotateY(180deg);
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+    }
+
+    .scores {
+      height: 5vh;
+      width: min(80vw, 750px);
+      /* width: 80vw; */
+      background: linear-gradient(to right, rgb(94, 93, 247) 50%, rgb(255, 255, 255) 50%);
+      font-size: clamp(20px, 15vw, 40px);
+      color: white;
+      text-align: center;
+      padding: 0vh 1.5vw;
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      font-family: "Jersey 20", sans-serif;
+      z-index: 100;
+      border-radius: 25px;
+      align-items: center;
+    }
+
+    .nav {
+      width: 100vw;
+      top: 1.5vh;
+      gap: 0.5vw;
+      /* background-color:red ; */
+      position: absolute;
+      height: fit-content;
+      align-items: center;
+      justify-content: center;
+      display: none;
+      z-index: 98;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    .you-nav,
+    .opponent-nav {
+      height: 8vh;
+      text-align: center;
+      font-size: xx-large;
+      display: grid;
+      align-items: center;
+      border-radius: 12px;
+      width: 10vw;
+      font-size: x-large;
+      background-color: rgb(94, 93, 247);
+      overflow: hidden;
+    }
+    .you-nav{
+      color:white;
+    }
+
+    .opponent-nav {
+      background-color: white;
+      color: black;
+    }
+
+    .scores ul {
+      list-style: none;
+    }
+
+
+    @keyframes shake {
+      0% {
+        transform: translateX(0);
+      }
+
+      25% {
+        transform: translateX(-5px);
+      }
+
+      50% {
+        transform: translateX(5px);
+      }
+
+      75% {
+        transform: translateX(-5px);
+      }
+
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes vibrate {
+      0% {
+        transform: translateX(0);
+      }
+
+      25% {
+        transform: translate(-5px);
+      }
+
+      50% {
+        transform: translateX(5px);
+      }
+
+      75% {
+        transform: translateX(-5px);
+      }
+
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    .card.shake {
+      animation: shake 0.5s;
+    }
+
+    .card.alert {
+      box-shadow: 0 0 10px red;
+      border: 2px solid red;
+    }
+
+    .label {
+      font-size: 20px;
+      font-weight: bold;
+      text-anchor: middle;
+      dominant-baseline: middle;
+      fill: white;
+    }
+
+    .message-pair {
+      font-size: clamp(18px, 5vw, 32px);
+      text-align: center;
+    }
+
+    .game-over {
+      height: 100vh;
+      width: 100vw;
+      position: absolute;
+      z-index: 1000;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      background-color: transparent;
+      padding: 2vw;
+      box-sizing: border-box;
+    }
+
+    .box-game-over {
+      width: 70%;
+      max-width: 1200px;
+      height: 65vh;
+      /* background-color: rgb(121 21 221); */
+      background-color: #61D7EF;
+      box-shadow: 0 0 20px 20px rgba(0, 0, 0, 0.7);
+      border-radius: 1rem;
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      grid-template-rows: 100%;
+      align-items: flex-end;
+      gap: 1vw;
+    }
+
+    .part-1-game-over,
+    .part-3-game-over {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      /* padding-bottom: 2vh; */
+    }
+
+    .part-1-game-over img,
+    .part-3-game-over img {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .game-over-img {
+      /* background: red; */
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      object-fit: contain;
+    }
+
+    /* .part-3-game-over img {
+      transform: rotateY(180deg);
+    } */
+
+    .part-2-game-over {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      height: 100%;
+      padding: 2vh 1vw;
+      text-align: center;
+    }
+
+    .part-2-game-over div h1 {
+      font-size: clamp(5rem, 9vw, 7rem);
+      color: rgba(244, 192, 64, 1);
+      font-weight: 900;
+      -webkit-text-stroke: 0.1px black;
+      text-stroke: 0.1px black;
+    }
+
+
+    .game-over-button {
+      width: 90%;
+      max-width: 400px;
+      height: clamp(3rem, 10vh, 6rem);
+      background: url('/images/button.png') center / contain no-repeat;
+      border: none;
+      outline: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1vw;
+      cursor: pointer;
+      padding-right: 4%;
+      scale: 0.95;
+      transition: scale 0.2s;
+    }
+
+    .game-over-button:hover {
+      scale: 1;
+    }
+
+    .game-over-button img {
+      height: 60%;
+      width: auto;
+    }
+
+    .game-over-button h2 {
+      font-size: clamp(1.5rem, 4vw, 3rem);
+      font-family: "Jersey 20", sans-serif;
+      font-weight: 900;
+      color: rgba(244, 192, 64, 1);
+      -webkit-text-stroke: 1px black;
+      text-stroke: 1px black;
+    }
+
+    .queuelength {
+      top: 93vh;
+    }
+
+    .playerplaying {
+      top: 95vh;
+    }
+
+    .version {
+      bottom: 1vh;
+    }
+
+    .home .card-container:nth-of-type(1) .card-home {
+      animation: animation1 1s ease forwards;
+    }
+
+    .home .card-container:nth-of-type(2) .card-home {
+      animation: animation2 1s ease forwards;
+    }
+
+    .home .card-container:nth-of-type(3) .card-home {
+      animation: animation3 1s ease forwards;
+    }
+
+    .home .card-container:nth-of-type(4) .card-home {
+      animation: animation4 1s ease forwards;
+    }
+
+    .home .card-container:nth-of-type(5) .card-home {
+      animation: animation5 1s ease forwards;
+    }
+
+    .home .card-container:nth-of-type(6) .card-home {
+      animation: animation6 1s ease forwards;
+    }
+
+    .home .card-container:nth-of-type(7) .card-home {
+      animation: animation7 1s ease forwards;
+    }
+
+    .home .card-container:nth-of-type(8) .card-home {
+      animation: animation8 1s ease forwards;
+    }
+
+    .home .card-container:nth-of-type(9) .card-home {
+      animation: animation9 1s ease forwards;
+    }
+
+    .home .card-container:nth-of-type(10) .card-home {
+      animation: animation10 1s ease forwards;
+    }
+
+    .home .card-container:nth-of-type(11) .card-home {
+      animation: animation11 1s ease forwards;
+    }
+
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      main {
+        width: 95vw;
+        height: 95vw;
+        gap: 5px;
+      }
+
+      .card-container {
+        width: 28vw;
+        height: 15vh
+      }
+
+      .card-home {
+        scale: 0.8
+      }
+
+      .center-text {
+        /* top:10%; */
+        font-size: 20vw;
+        -webkit-text-stroke: 1px black;
+
+      }
+
+      .play-button {
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100%;
+      }
+
+      .play-button .start-button {
+        margin: 0 auto;
+        left: 0;
+      }
+
+      .center-button {
+        width: 100%;
+        height: 6.5vh;
+        top: 0%;
+        border: 0.5px solid rgba(0, 0, 0, 0.159)
+      }
+
+      .center-button p {
+        font-size: 6.5vw;
+      }
+
+      .home .center {
+        width: 55vw;
+      }
+
+      .setting {
+        height: 55vh;
+        padding: 20px;
+        margin-top: -40%;
+      }
+
+      .setting-1 h1 {
+        font-size: clamp(30px, 30px, 400px)
+      }
+
+      .setting-1 select,
+      .setting-1 input {
+        height: 4vh;
+      }
+
+      .setting-text {
+        margin-bottom: 3.5vh;
+      }
+
+      .setting-1 {
+        flex-direction: column;
+        /* gap: 10px; */
+      }
+
+      /* .start-button{
+
+      } */
+
+      .nav {
+        gap: 10px;
+      }
+
+      .scores {
+        height: 3.5vh;
+        font-size: x-large;
+        margin-bottom: 10px;
+      }
+
+      svg {
+        position: static;
+        transform: none;
+        scale: 1.1
+      }
+
+      select {
+        width: 100%;
+      }
+
+      .box-game-over {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        height: auto;
+        padding: 0vw;
+        width: 90vw;
+      }
+
+      .part-1-game-over {
+        order: 3;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        display: flex;
+        padding: 0px;
+      }
+
+
+      .part-1-game-over img,
+      .part-3-game-over img {
+        width: 45vw;
+        height: auto;
+        object-fit: contain;
+      }
+
+      .part-2-game-over div {
+        /* margin-bottom: 4vh; */
+      }
+
+      .game-over-grade {
+        margin-top: 3vh;
+      }
+
+      .part-2-game-over {
+        order: 1;
+        text-align: center;
+        /* padding: 2vh 0; */
+      }
+
+      .part-2-game-over div h1 {
+        font-size: clamp(3.5rem, 8.5vw, 3.5rem);
+      }
+
+      .game-over-button {
+        width: 75%;
+        height: clamp(3rem, 10vh, 6rem);
+        margin-top: 2vh;
+        background-size: contain;
+        justify-content: center;
+      }
+
+      .game-over-button h2 {
+        font-size: clamp(1.7rem, 5vw, 2.5rem);
+        -webkit-text-stroke: 0.5px black;
+
+      }
+
+      .you-nav,
+      .opponent-nav {
+        width: 25vw;
+        height: 5vh;
+      }
+
+      .game-over-button img {
+        height: 60%;
+      }
+
+      .queuelength {
+        top: 85vh
+      }
+
+      .playerplaying {
+        top: 87vh;
+      }
+
+      .version {
+        bottom: 11vh;
+      }
+
+      .home .card-container:nth-of-type(1) .card-home {
+        animation: animation1-mobile 1s ease forwards;
+      }
+
+      .home .card-container:nth-of-type(2) .card-home {
+        animation: animation2-mobile 1s ease forwards;
+      }
+
+      .home .card-container:nth-of-type(3) .card-home {
+        animation: animation3-mobile 1s ease forwards;
+      }
+
+      .home .card-container:nth-of-type(4) .card-home {
+        animation: animation4-mobile 1s ease forwards;
+      }
+
+      .home .card-container:nth-of-type(5) .card-home {
+        animation: animation5-mobile 1s ease forwards;
+      }
+
+      .home .card-container:nth-of-type(6) .card-home {
+        animation: animation6-mobile 1s ease forwards;
+      }
+
+      .home .card-container:nth-of-type(7) .card-home {
+        animation: animation7-mobile 1s ease forwards;
+      }
+
+      .home .card-container:nth-of-type(8) .card-home {
+        animation: animation8-mobile 1s ease forwards;
+      }
+
+      .home .card-container:nth-of-type(9) .card-home {
+        animation: animation9-mobile 1s ease forwards;
+      }
+
+      .home .card-container:nth-of-type(10) .card-home {
+        animation: animation10-mobile 1s ease forwards;
+      }
+
+      .home .card-container:nth-of-type(11) .card-home {
+        animation: animation11-mobile 1s ease forwards;
+      }
+
+    }
+
+    @media (max-width: 480px) {
+      main {
+        height: 100vw;
+      }
+
+      .setting-text {
+        font-size: 2.5rem;
+      }
+
+      select {
+        font-size: 0.9rem;
+      }
+
+
+      .card-container {
+        scale: 0.9
+      }
+
+    }
+
+    @keyframes cardanimation {
+      0% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-20px);
+      }
+
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes animation1 {
+      100% {
+        margin: -32vh 0px 0px -20vw;
+        rotate: -10deg;
+      }
+    }
+
+    @keyframes animation2 {
+      100% {
+        margin: -35vh 0px 0px -40vw;
+        rotate: 3deg;
+      }
+    }
+
+    @keyframes animation3 {
+      100% {
+        margin: 2.5vh 0px 0px -25vw;
+        rotate: -14deg;
+      }
+    }
+
+    @keyframes animation4 {
+      100% {
+        margin: 10vh 0px 0px -40vw;
+        rotate: -5deg;
+      }
+    }
+
+    @keyframes animation5 {
+      100% {
+        margin: 40vh 0px 0px -20vw;
+        rotate: 4deg;
+      }
+    }
+
+    @keyframes animation6 {
+      100% {
+        margin: 40vh 0px 0px -5vw;
+        rotate: 7deg;
+      }
+    }
+
+    @keyframes animation7 {
+      100% {
+        margin: -30vh 0px 0px 15vw;
+        rotate: 9deg;
+      }
+    }
+
+    @keyframes animation8 {
+      100% {
+        margin: 5vh 0px 0px 21vw;
+        rotate: 5deg;
+      }
+    }
+
+    @keyframes animation9 {
+      100% {
+        margin: 37vh 0px 0px 17vw;
+        rotate: 4deg;
+      }
+    }
+
+    @keyframes animation10 {
+      100% {
+        margin: -35vh 0px 0px 35vw;
+        rotate: 10deg;
+      }
+    }
+
+    @keyframes animation11 {
+      100% {
+        margin: -8vh 0px 0px 40vw;
+        rotate: 11deg;
+      }
+    }
+
+
+    @keyframes animation1-mobile {
+      100% {
+        margin: 19.5vh 0px 0px 0vw;
+        rotate: 0deg;
+      }
+    }
+
+    @keyframes animation2-mobile {
+      100% {
+        margin: 16vh 0px 0px -37vw;
+        rotate: -6deg;
+      }
+    }
+
+    @keyframes animation3-mobile {
+      100% {
+        margin: -32vh 0px 0px -37vw;
+        rotate: 6deg;
+      }
+    }
+
+    @keyframes animation4-mobile {
+      100% {
+        margin: -35vh 0px 0px 0vw;
+
+        rotate: 0deg;
+      }
+    }
+
+    @keyframes animation5-mobile {
+      100% {
+        margin: 30vh 0px 0px 27vw;
+        rotate: 8deg;
+      }
+    }
+
+    @keyframes animation6-mobile {
+      100% {
+        margin: 35vh 0px 0px 0vw;
+        rotate: 0deg;
+      }
+    }
+
+    @keyframes animation7-mobile {
+      100% {
+        margin: 16vh 0px 0px 37vw;
+        rotate: 6deg;
+      }
+    }
+
+    @keyframes animation8-mobile {
+      100% {
+        margin: -7vh 0px 0px 40vw;
+        rotate: 2deg;
+      }
+    }
+
+    @keyframes animation9-mobile {
+      100% {
+        margin: -7vh 0px 0px -40vw;
+        rotate: -2deg;
+      }
+    }
+
+    @keyframes animation10-mobile {
+      100% {
+        margin: 30vh 0px 0px -25vw;
+        rotate: -6deg;
+      }
+    }
+
+    @keyframes animation11-mobile {
+      100% {
+        margin: -32vh 0px 0px 40vw;
+        rotate: -6deg;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="game-over">
+    <div class="box-game-over">
+    </div>
+  </div>
+  <!-- <div class="landing-game"> -->
+  <section class="home">
+    <!-- <div class="home-cards"> -->
+    <!-- Wrapped each card in a container -->
+    <div class="card-container" style="--index:0">
+      <div class="card-home" style="background-image: url(/images/pacifica-nft-1.webp);"></div>
+    </div>
+    <div class="card-container" style="--index:1">
+      <div class="card-home" style="background-image: url(/images/pacifica-nft-2.png);"></div>
+    </div>
+    <div class="card-container" style="--index:2">
+      <div class="card-home" style="background-image: url(/images/pacifica-nft-3.png);"></div>
+    </div>
+    <div class="card-container" style="--index:3">
+      <div class="card-home" style="background-image: url(/images/pacifica-nft-4.webp);"></div>
+    </div>
+    <div class="card-container" style="--index:4">
+      <div class="card-home" style="background-image: url(/images/pacifica-nft-5.webp);"></div>
+    </div>
+    <div class="card-container" style="--index:5">
+      <div class="card-home" style="background-image: url(/images/pacifica-nft-6.webp);"></div>
+    </div>
+    <div class="card-container" style="--index:6">
+      <div class="card-home" style="background-image: url(/images/pacifica-nft-7.webp);"></div>
+    </div>
+    <div class="card-container" style="--index:7">
+      <div class="card-home" style="background-image: url(/images/pacifica-nft-8.webp);"></div>
+    </div>
+    <div class="card-container" style="--index:8">
+      <div class="card-home" style="background-image: url(/images/pacifica-nft-1.webp);"></div>
+    </div>
+    <div class="card-container" style="--index:9">
+      <div class="card-home" style="background-image: url(/images/pacifica-nft-6.webp);"></div>
+    </div>
+    <div class="card-container" style="--index:10">
+      <div class="card-home" style="background-image: url(/images/pacifica-nft-3.png);"></div>
+    </div>
+
+    <!-- </div> -->
+    <div class="center">
+      <div class="home-text">
+        <h1 class="center-text center-text-1">card</h1>
+        <h1 class="center-text center-text-2">bliss</h1>
+      </div>
+
+      <button class="center-button">
+        <p>play now</p>
+      </button>
+    </div>
+    <div style="z-index: 1; opacity: 1;" class="clouds">
+      <img src="/images/clouds2.png" alt="">
+      <img src="/images/clouds1.png" alt="">
+    </div>
+    <!-- </div> -->
+    <div class="setting">
+      <h1 class="setting-text">SOME SETTING's</h1>
+      <div style="opacity: 0;" class="setting-1">
+        <h1>CHOOSE A SONG : </h1>
+        <select  name="song-select" style="position: relative; z-index: 10000; width:50%; border-radius: 4px;">
+          <option value="mute">Mute</option>
+          <option value="song-2">Pacifica Anthem 1</option>
+          <option value="song-3">Pacifica Anthem 2</option>
+        </select>
+      </div>
+      <div class="setting-1">
+        <h1>ENTER YOUR NAME :</h1>
+        <input style="position: relative; z-index: 10000; width:50%;  border-radius: 4px; padding:1.5px" class="name"
+          type="text" placeholder=" X username (preferred)">
+      </div>
+      <div style="justify-content: center;" class="setting-1 play-button">
+        <button class="start-button">Play!</button>
+      </div>
+    </div>
+  </section>
+  <div class="nav">
+    <div class="you-nav">You</div>
+    <div class="scores">
+      <ul>
+        <li style="color:white;" class="my-score">0</li>
+      </ul>
+      <ul>
+        <li style="color:black" class="opponent-score">0</li>
+      </ul>
+    </div>
+    <div class="opponent-nav">rival</div>
+  </div>
+  <section class="main-section">
+    <main></main>
+    <audio id="song-1" src="/songs/Mitosis Anthem 1.mp3" loop></audio>
+    <audio id="song-2" src="/songs/Mitosis Anthem 2.mp3" loop></audio>
+    <audio id="card-flip-music" src="/songs/flipcard-91468.mp3"></audio>
+    <audio id="2-card-flip-music" src="/songs/magazine-cover-turn-page_fy2vyhNO_NWM.mp3"></audio>
+    <audio id="button-click-music" src="/songs/ui-button-click-5-327756.mp3"></audio>
+    <div style="display: none;" class="player1"></div>
+    <div style="display: none;" class="player2"></div>
+  </section>
+  </div>
+  <p class="version"
+    style="font-family: 'Jersey 20'; position: absolute; z-index: 1000; font-size: clamp(12px, 3vw, 18px); color:rgb(255, 255, 255); right:10px;">
+    Alpha v0.1</p>
+  <p class="queuelength"
+    style="font-family: 'Jersey 20'; position: absolute; z-index: 1000; font-size: clamp(12px, 3vw, 18px); color:rgb(255, 0, 0);  left:10px;">
+    Waiting Player's:0</p>
+  <p class="playerplaying"
+    style="font-family: 'Jersey 20'; position: absolute; z-index: 1000; font-size: clamp(12px, 3vw, 18px); color:rgb(255, 0, 0);  left:10px;">
+    Player's Playing:0</p>
+  <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"
+    integrity="sha384-mkQ3/7FUtcGyoppY6bz/PORYoGqOl7/aSUMn2ymDOJcapfS6PHqxhRTMh1RR0Q6+"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"
+    integrity="sha512-wC/cunGGDjXSl9OHUH0RuqSyW4YNLlsPwhcLxwWW1CR4OeC2E1xpcdZz2DeQkEmums41laI+eGMw95IJ15SS3g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    const socket = io()
+    const images = [
+      "pacifica-nft-1.webp",
+      "pacifica-nft-2.png",
+      "pacifica-nft-3.png",
+      "pacifica-nft-4.webp",
+      "pacifica-nft-5.webp",
+      "pacifica-nft-6.webp",
+      "pacifica-nft-7.webp",
+      "pacifica-nft-8.webp"
+    ];
+
+    const cardFlipMusic = document.getElementById("card-flip-music");
+    const card2FlipMusic = document.getElementById("2-card-flip-music");
+    const buttonMusic = document.getElementById("button-click-music")
+    let randomPairedImages = [];
+
+    function playSound(music, volume) {
+      const sound = music.cloneNode();
+      sound.volume = volume;
+      sound.play().catch((err) => {
+        console.log("Music play was blocked:", err);
+      });
+    }
+
+    function playMusic(music, volume) {
+      console.log(music)
+      music.volume = volume
+      music.play().catch((err) => {
+        console.log("Music play was blocked:", err);
+      });
+    }
+
+    const main = document.querySelector("main");
+    const myScoreEl = document.querySelector(".my-score")
+    const opponentScoreEl = document.querySelector(".opponent-score")
+    const homeCards = document.querySelectorAll('.card-home')
+    let score = 0;
+    let selected = [];
+    let paired = [];
+    let isProcessing = false;
+    let gameStat = false;
+    let gameQuit = true;
+
+    // Initialize tilt.js on the inner cards
+    document.querySelectorAll('.card-home').forEach(card => {
+      VanillaTilt.init(card, {
+        max: 15,
+        perspective: 1000,
+        scale: 1.05,
+        speed: 300,
+        transition: true,
+        glare: true, // Enable glare effect (must be true to activate it)
+        "max-glare": 0.8, // Maximum glare opacity (0 to 1)
+      });
+    });
+
+    VanillaTilt.init(document.querySelector(".center-button"), {
+      max: 0,
+      perspective: 1000,
+      scale: 1.05,
+      speed: 300,
+      transition: true,
+      glare: true, // Enable glare effect (must be true to activate it)
+      "max-glare": 0.8, // Maximum glare opacity (0 to 1)
+    })
+
+    function Game(
+      playMusic,
+      playSound,
+      main,
+      score,
+      bg_music,
+      selected,
+      x,
+      cardFlipMusic,
+      randomPairedImages,
+      name
+    ) {
+      if (gameStat && !gameQuit) {
+        const player1 = document.querySelector(".player1").innerText
+        const player2 = document.querySelector(".player2").innerText
+
+        // document.querySelector(".main-section").style.backgroundImage = `url(/images/e.png)`
+        document.querySelector('.home').style.display = "none"
+        name ? document.querySelector('.you-nav').innerText = name : null
+
+        name ? socket.emit('nameExchange', { name, player1, player2 }) : null
+
+        if (window.innerWidth <= 768) {
+          document.querySelector('.nav').style.display = "grid"
+        }
+        else {
+          document.querySelector('.nav').style.display = "flex"
+        }
+
+        randomPairedImages.forEach((img, i) => {
+          if (i < x) {
+            const card = document.createElement("div");
+            card.classList.add('card');
+            card.classList.add(`card-${i + 1}`);
+            card.dataset.image = `/images/${img}`;
+
+            const front = document.createElement("div");
+            front.classList.add("front");
+
+            const back = document.createElement("div");
+            back.classList.add("back");
+            back.style.backgroundImage = `url(/images/${img})`;
+
+            card.classList.add("flipped");
+
+            card.appendChild(front);
+            card.appendChild(back);
+
+            card.addEventListener("click", (event) => {
+              const cardClicked = event.currentTarget
+              const myScore = document.querySelector('.my-score')
+              const opponentScore = document.querySelector('.opponent-score')
+
+              if (cardClicked.classList.contains("flipped")) {
+                cardClicked.classList.add("alert");
+
+                setTimeout(() => {
+                  cardClicked.classList.remove("alert");
+                }, 500);
+                return
+              }
+
+              else if (isProcessing || paired.includes(cardClicked.dataset.image) || selected.length == 2) {
+
+                cardClicked.classList.add("shake");
+                cardClicked.classList.add("alert");
+
+                setTimeout(() => {
+                  cardClicked.classList.remove("shake");
+                  cardClicked.classList.remove("alert");
+                }, 500);
+
+                return
+              }
+              cardClicked.classList.add("flipped")
+              selected.push(cardClicked)
+              socket.emit("cardClick", { card: cardClicked.className, player1, player2, paired, action: "flipped" })
+              playSound(cardFlipMusic, 1);
+              console.log(paired.length)
+
+              if (selected.length == 1 && paired.length == 7 ) {
+                if (Number(myScore.innerText) < Number(opponentScore.innerText)) {
+                  document.querySelector('.image-game-over-1 > img').src = "/images/pacifica-nft-2-transparent.png"
+                  document.querySelector('.image-game-over-2 > img').src = "/images/pacifica-nft-3-transparent.png"
+                  document.querySelector('.game-over-grade').innerText = "YOU LOST"
+                  document.querySelector('.game-over-button > h2').innerText = "TRY AGAIN"
+                  document.querySelector('.game-over-button > img').src = "/images/reload-game-over.png"
+                  document.querySelector('.game-over-button').style.background = "url(/images/button-lost-game-over.png) center / contain no-repeat"
+                  // document.querySelector('.box-game-over').style.boxShadow = "0 0 20px 10px rgba(128, 0, 0, 0.6)"
+                }
+                document.querySelector('.game-over').style.display = "flex"
+                socket.emit("endGame", { player1, player2, myScore: myScore.innerText, opponentScore: opponentScore.innerText })
+                gameQuit = true
+                gameStat = false
+
+                return
+              }
+
+              paired.forEach((datasetImage) => {
+                const pairedCard = document.querySelectorAll(`[data-image="${datasetImage}"]`)
+
+                if (!pairedCard[0].classList.contains("flipped")) {
+                  pairedCard[0].classList.add("flipped")
+                }
+                else if (!pairedCard[1].classList.contains("flipped")) {
+                  pairedCard[1].classList.add("flipped")
+
+                }
+              })
+
+              if (selected.length == 2) {
+
+                isProcessing = true
+
+                if (selected[0].dataset.image == selected[1].dataset.image) {
+
+                  paired.push(selected[0].dataset.image)
+                  myScore.innerText = Number(myScore.innerText) + 1
+                  const percentBar = Number(myScore.innerText) * (100 / (Number(myScore.innerText) + Number(opponentScore.innerText) || 1))
+
+                  document.querySelector('.scores').style.background = `linear-gradient(to right, rgb(94, 93, 247) ${percentBar == 100 ? percentBar - 10 : percentBar}%, white ${percentBar == 100 ? percentBar - 10 : percentBar}% )`
+                  socket.emit('score-update-frontend', { card: selected[0].className, score: Number(myScore.innerText), player1, player2, paired })
+
+                  selected = [];
+
+                  if (Number(myScore.innerText) + Number(opponentScore.innerText) == 8 && paired.length == 8) {
+                    if (Number(myScore.innerText) < Number(opponentScore.innerText)) {
+                      document.querySelector('.image-game-over-1 > img').src = "/images/pacifica-nft-2-transparent.png"
+                      document.querySelector('.image-game-over-2 > img').src = "/images/pacifica-nft-3-transparent.png"
+                      document.querySelector('.game-over-grade').innerText = "YOU LOST"
+                      document.querySelector('.game-over-button > h2').innerText = "TRY AGAIN"
+                      document.querySelector('.game-over-button > img').src = "/images/reload-game-over.png"
+                      document.querySelector('.game-over-button').style.background = "url(/images/button-lost-game-over.png) center / contain no-repeat"
+                      // document.querySelector('.box-game-over').style.boxShadow = "0 0 20px 10px rgba(128, 0, 0, 0.6)"
+                    }
+                    document.querySelector('.game-over').style.display = "flex"
+                    gameQuit = true
+                    gameStat = false
+
+                    return
+                  }
+
+                  isProcessing = false
+                } else {
+
+                  setTimeout(() => {
+
+                    selected[0].classList.remove("flipped")
+                    selected[1].classList.remove("flipped")
+
+                    socket.emit("cardClick", { card: { card1: selected[0].className, card2: selected[1].className }, player1, player2, cardVerify: [selected[0].dataset.image, selected[1].dataset.image], paired, action: "un-flipped" })
+
+                    playSound(card2FlipMusic, 1);
+                    selected = []
+                    isProcessing = false
+                    return
+
+                  }, 1000);
+
+                }
+              }
+
+            })
+
+
+            if (x > 36) {
+              main.style.height = "95vh"
+              main.style.width = "95vh"
+              main.style.scale = "1"
+              main.style.left = "0%"
+            }
+            main.appendChild(card);
+            setTimeout(() => {
+              card.classList.remove("flipped")
+            }, x / 4 * 1000);
+          }
+        })
+      }
+    }
+
+    let songSelect;
+    document.querySelector('.start-button').addEventListener("click", () => {
+      playSound(buttonMusic, 1);
+
+      const gridSelect = 4
+      songSelect = document.querySelector('[name = "song-select"]').value
+      name = document.querySelector('.name').value
+
+      const x = gridSelect
+
+      // Responsive grid setup
+      main.style.gridTemplateColumns = `repeat(${gridSelect}, 1fr)`;
+      main.style.gridTemplateRows = `repeat(${gridSelect}, 1fr)`;
+      main.style.width = "min(95vw, 80vh)";
+      main.style.height = "min(95vw, 80vh)";
+      main.style.margin = "0 auto";
+
+      if (window.innerWidth <= 768 && x >= 6) {
+        main.style.width = "95vw";
+        main.style.height = "95vw";
+        main.style.gap = "5px";
+
+        document.querySelector('.nav').innerHTML =
+          ` <div style="display: flex; justify-content: space-between;">
+                <div class="you-nav">You</div>
+                <div class="opponent-nav">rival</div>
+              </div>
+              <div class="scores">
+                <ul>
+                  <li class="my-score">0</li>
+                </ul>
+                <ul>
+                  <li style="color:black;" class="opponent-score">0</li>
+                </ul>
+              </div>`
+      }
+
+      document.querySelector('.setting').style.display = "none"
+      document.querySelector('.home').insertAdjacentHTML("beforeend", "<h1>Waiting for a player...</h1>");
+      // document.querySelector('.home').insertAdjacentHTML("beforeend", `<h1>Or if u want to play with your friends u can invite them</h1>`);
+      alert("To keep playing, you can either open a new tab and hit 'Play' to jump right back in, or share the game link with your friends to invite them, playing with friends makes it more fun! Or you can simply wait for a user to join the game.");
+      socket.emit("addQueue", { gridSelect, songSelect, name})
+
+    })
+
+    socket.on("matchFound", (response) => {
+      if (response.content == "response") {
+        const name = document.querySelector('.name').value
+        const ImagesToChoose = images.sort(() => Math.random() - 0.5).slice(0, response.gridSelect * response.gridSelect);
+        ImagesToChoose.forEach((pairImage1, index) => {
+          if (index <= response.gridSelect * response.gridSelect / 2 - 1) {
+            randomPairedImages[index + index] = pairImage1;
+            randomPairedImages[index + index + 1] = pairImage1;
+          }
+        });
+
+        document.querySelector('.player1').innerText = response.player1
+        document.querySelector('.player2').innerText = response.player2
+        document.querySelector('.player1').classList.add("playing")
+        document.querySelector('.player2').classList.add("friend-playing")
+
+        randomPairedImages = randomPairedImages.sort(() => Math.random() - 0.5);
+        socket.emit("imagesToChoose", {
+          ImagesToChoose: randomPairedImages,
+          gridSelect: response.gridSelect,
+          songSelect: response.songSelect,
+          player1: response.player1,
+          player2: response.player2,
+        });
+
+        gameStat = true
+        gameQuit = false
+
+
+        if (songSelect != "mute") {
+          playMusic(document.getElementById(songSelect), 1);
+        }
+
+        Game(
+          playMusic,
+          playSound,
+          main,
+          score,
+          response.songSelect,
+          selected,
+          response.gridSelect * response.gridSelect,
+          cardFlipMusic,
+          randomPairedImages,
+          name
+        )
+      }
+      else if (response.content != "response") {
+        const name = document.querySelector('.name').value
+
+        gameStat = true
+        gameQuit = false
+
+        document.querySelector('.player1').innerText = response.player1
+        document.querySelector('.player2').innerText = response.player2
+        document.querySelector('.player1').classList.add("friend-playing")
+        document.querySelector('.player2').classList.add("playing")
+
+        if (songSelect != "mute") {
+          playMusic(document.getElementById(songSelect), 1);
+        }
+        Game(
+          playMusic,
+          playSound,
+          main,
+          score,
+          response.songSelect,
+          selected,
+          response.gridSelect * response.gridSelect,
+          cardFlipMusic,
+          response.content,
+          name
+        )
+      }
+    })
+
+    socket.on("gameDisconnected", () => {
+      main.style.display = "none"
+      document.querySelector('.home').style.display = "flex"
+      document.querySelector('.home').innerHTML = "<h1 class='message-pair'>Opponent Disconnected!</h1>"
+      setTimeout(() => {
+        location.reload()
+      }, 2000);
+    })
+
+    socket.on('cardClick', (card) => {
+      console.log(card, card.action)
+      if (card.action == "flipped") {
+        const element = document.querySelector("main > ." + (card.card).split(' ')[1])
+        // console.log(document.querySelector(" main >.card-3"))
+        element.classList.add("flipped")
+
+      }
+      else if (card.action == "un-flipped") {
+        const card1 = document.querySelector("main > ." + (card.card.card1).split(' ')[1])
+        const card2 = document.querySelector("main > ." + (card.card.card2).split(' ')[1])
+        if (!paired.includes(card1.dataset.image) && !paired.includes(card2.dataset.image)) {
+          card1.classList.remove('flipped')
+          card2.classList.remove('flipped')
+        }
+      }
+      paired.forEach((datasetImage) => {
+        const pairedCard = document.querySelectorAll(`[data-image="${datasetImage}"]`)
+
+        if (!pairedCard[0].classList.contains("flipped")) {
+          pairedCard[0].classList.add("flipped")
+        }
+        else if (!pairedCard[1].classList.contains("flipped")) {
+          pairedCard[1].classList.add("flipped")
+        }
+      })
+    })
+
+    socket.on('waitingForMatch', (response) => {
+      document.querySelector('.home').innerHTML = `<h1 class='message-pair'>${response.message}</h1>`
+    })
+    socket.on('score-update-backend', (response) => {
+      const element = document.querySelector("main > ." + (response.card).split(' ')[1])
+      const myScore = document.querySelector('.my-score')
+      const opponentScore = document.querySelector('.opponent-score')
+      const percentBar = Number(myScore.innerText) * (100 / (Number(myScore.innerText) + Number(opponentScore.innerText) || 1))
+
+      paired.push(element.dataset.image)
+      opponentScore.innerText = response.score
+
+      document.querySelector('.scores').style.background = `linear-gradient(to right, rgb(94, 93, 247) ${percentBar == 100 ? percentBar - 10 : percentBar}%,  rgb(255, 255, 255)  ${percentBar == 100 ? percentBar - 10 : percentBar}% )`
+
+      if (Number(myScore.innerText) + Number(opponentScore.innerText) == 8 && paired.length == 8) {
+        if (Number(myScore.innerText) < Number(opponentScore.innerText)) {
+          document.querySelector('.image-game-over-1 > img').src = "/images/pacifica-nft-2-transparent.png"
+          document.querySelector('.image-game-over-2 > img').src = "/images/pacifica-nft-3-transparent.png"
+          document.querySelector('.game-over-grade').innerText = "YOU LOST"
+          document.querySelector('.game-over-button > h2').innerText = "TRY AGAIN"
+          document.querySelector('.game-over-button > img').src = "/images/reload-game-over.png"
+          document.querySelector('.game-over-button').style.background = "url(/images/button-lost-game-over.png) center / contain no-repeat"
+          // document.querySelector('.box-game-over').style.boxShadow = "0 0 20px 10px rgba(128, 0, 0, 0.6)"
+        }
+        document.querySelector('.game-over').style.display = "flex"
+      }
+
+    })
+
+    socket.on("invalidFlip", (cardClass) => {
+      const card1 = document.querySelector("main > ." + (cardClass.card1).split(' ')[1])
+      const card2 = document.querySelector("main > ." + (cardClass.card2).split(' ')[1])
+      card.classList.add('flipped')
+      card.classList.add('flipped')
+    })
+
+    socket.on('endGame', (score) => {
+      if (Number(score.opponentScore) < Number(score.myScore)) {
+        document.querySelector('.image-game-over-1 > img').src = "/images/pacifica-nft-2-transparent.png"
+        document.querySelector('.image-game-over-2 > img').src = "/images/pacifica-nft-3-transparent.png"
+        document.querySelector('.game-over-grade').innerText = "YOU LOST"
+        document.querySelector('.game-over-button > h2').innerText = "TRY AGAIN"
+        document.querySelector('.game-over-button > img').src = "/images/reload-game-over.png"
+        document.querySelector('.game-over-button').style.background = "url(/images/button-lost-game-over.png) center / contain no-repeat"
+        // document.querySelector('.box-game-over').style.boxShadow = "0 0 20px 10px rgba(128, 0, 0, 0.6)"
+      }
+      document.querySelector('.game-over').style.display = "flex"
+    })
+
+    socket.on('nameExchange', name => {
+      document.querySelector('.opponent-nav').innerText = name
+    })
+
+    document.querySelector('.center-button').addEventListener('click', () => {
+      document.querySelectorAll('.card-home').forEach((element) => {
+        element.style.display = "none"
+      })
+      document.querySelector('.clouds').style.display = "none"
+      document.querySelector('.center').style.display = "none"
+
+      document.querySelector('.setting').style.display = "flex"
+    })
+
+    if (window.innerWidth <= 768) {
+      document.querySelector(".box-game-over").innerHTML = `
+      <div class="part-2-game-over">
+        <div>
+          <h1 class="game-over-grade">YOU WON</h1> 
+          <h1>THE GAME!</h1> 
+        </div>
+        <button class="game-over-button" onclick="location.reload()"><img src="/images/play.png"><h2>WIN AGAIN</h2></button>
+      </div>
+      <div class="part-1-game-over">
+        <div class="img-game-over-div image-game-over-1">
+          <img class="game-over-img" src="/images/pacifica-nft-2-transparent.png" alt="">
+        </div>
+        <div  class="img-game-over-div image-game-over-2">
+          <img class="game-over-img" src="/images/pacifica-nft-3-transparent.png" alt="">
+        </div>
+      </div>`
+    }
+    else {
+      document.querySelector('.box-game-over').innerHTML = `
+      <div class="part-1-game-over image-game-over-1">
+        <img class="game-over-img" src="/images/pacifica-nft-2-transparent.png" alt="">
+      </div>
+      <div class="part-2-game-over">
+        <div>
+          <h1 class="game-over-grade">YOU WON</h1> 
+          <h1>THE GAME!</h1> 
+        </div>
+        <button class="game-over-button" onclick="location.reload()"><img src="/images/play.png"><h2>WIN AGAIN</h2></button>
+      </div>
+      <div class="part-3-game-over image-game-over-2">
+        <img class="game-over-img" src="/images/pacifica-nft-3-transparent.png" alt="">
+      </div>
+      `
+    }
+
+    socket.on("QueueLength", (length) => {
+      document.querySelector('.queuelength').innerText = `Waiting Player's: ${length}`
+    })
+    socket.on("GameLength", (length) => {
+      document.querySelector('.playerplaying').innerText = `Player's Playing: ${length}`
+    })
+
+  </script>
+</body>
+
+</html>
