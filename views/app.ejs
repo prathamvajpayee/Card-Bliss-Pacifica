@@ -1311,7 +1311,7 @@
                   myScore.innerText = Number(myScore.innerText) + 1
                   const percentBar = Number(myScore.innerText) * (100 / (Number(myScore.innerText) + Number(opponentScore.innerText) || 1))
 
-                  document.querySelector('.scores').style.background = `linear-gradient(to right, rgb(94, 93, 247) ${percentBar == 100 ? percentBar - 10 : percentBar}%, white ${percentBar == 100 ? percentBar - 10 : percentBar}% )`
+                  document.querySelector('.scores').style.background = `linear-gradient(to right, #61D7EF ${percentBar == 100 ? percentBar - 10 : percentBar}%, white ${percentBar == 100 ? percentBar - 10 : percentBar}% )`
                   socket.emit('score-update-frontend', { card: selected[0].className, score: Number(myScore.innerText), player1, player2, paired })
 
                   selected = [];
@@ -1540,7 +1540,7 @@
       paired.push(element.dataset.image)
       opponentScore.innerText = response.score
 
-      document.querySelector('.scores').style.background = `linear-gradient(to right, rgb(94, 93, 247) ${percentBar == 100 ? percentBar - 10 : percentBar}%,  rgb(255, 255, 255)  ${percentBar == 100 ? percentBar - 10 : percentBar}% )`
+      document.querySelector('.scores').style.background = `linear-gradient(to right, #61D7EF ${percentBar == 100 ? percentBar - 10 : percentBar}%,  rgb(255, 255, 255)  ${percentBar == 100 ? percentBar - 10 : percentBar}% )`
 
       if (Number(myScore.innerText) + Number(opponentScore.innerText) == 8 && paired.length == 8) {
         if (Number(myScore.innerText) < Number(opponentScore.innerText)) {
@@ -1639,6 +1639,7 @@
 
 
 </html>
+
 
 
 
