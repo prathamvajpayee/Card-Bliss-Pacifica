@@ -23,16 +23,17 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
-// app.use('/', appRoutes);
-app.get('/',(req,res)=>{
-      res.status(502).send( `Website Temporarily Unavailable.
-We’re making some changes. Please visit again soon.`)  
-})
+app.use('/', appRoutes);
+// app.get('/',(req,res)=>{
+//       res.status(502).send( `Website Temporarily Unavailable.
+// We’re making some changes. Please visit again soon.`)  
+// })
 
 app.get('/ping', (req, res) => res.send('pong'));
 
 server.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
+
 
 
